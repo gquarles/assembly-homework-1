@@ -3,36 +3,32 @@
 
 int main()
 {
-    int input = 12;
+    int input = 50;
     int sumOfFactors = 0;
     int closeness = 0;
     int hundred = 100;
     int test = 0;
 
-
-    
-
-    for (int i = 1; i < input; i++) {
-        if (input - i * (input / i) == 0) {
-            //sumOfFactors += i;
-        }
-        __asm {
-            mov eax, input //load input
-            mov edx, 0 //0 edx
-            div i //input / i
-            mul i // i * (input / i)
-            mov ebx, input
-            sub ebx, eax //input - i* (input / i)
-            cmp ebx, 0 // if input - i* (input / i) == 0
-            jne xexit //If it is not, exit the loop
-            mov eax, sumOfFactors //load sumOfFactors
-            add eax, i //Add factor to sum of factors
-            mov sumOfFactors, eax //Save to sumOfFactors
-            xexit: nop //Exit Loop
-        }
+    __asm{
+        mov ecx, input
+        sub ecx, 1
+        top: nop
+        mov eax, input //load input
+        mov edx, 0 //0 edx
+        div ecx //input / i
+        mul ecx // i * (input / i)
+        mov ebx, input
+        sub ebx, eax //input - i* (input / i)
+        cmp ebx, 0 // if input - i* (input / i) == 0
+        jne xexit //If it is not, exit the loop
+        mov eax, sumOfFactors //load sumOfFactors
+        add eax, ecx //Add factor to sum of factors
+        mov sumOfFactors, eax //Save to sumOfFactors
+        xexit: nop //Exit Loop
+        loop top
     }
 
-    printf("Sum of factors: %d\n", sumOfFactors);
+    
 
     __asm {
         //Calculate closeness to pure number
@@ -47,6 +43,7 @@ int main()
         mov closeness, eax //Load the closeness into the closeness var
     }
 
+    printf("Sum of factors: %d\n", sumOfFactors);
     printf("Input: %d\n", input);
     printf("Closeness: %d\n", closeness);
     
