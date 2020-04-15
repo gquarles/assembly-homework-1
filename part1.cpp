@@ -73,3 +73,50 @@ int main()
     }
     
 }
+
+/*
+Please input an integer greater than 1: 4
+Sum of factors: 3
+Input: 4
+Closeness: 25
+
+Please input an integer greater than 1: 32
+Sum of factors: 31
+Input: 32
+Closeness: 3
+
+Please input an integer greater than 1: 50
+Sum of factors: 43
+Input: 50
+Closeness: 14
+
+Please input an integer greater than 1: 51
+Sum of factors: 21
+Input: 51
+Closeness: 58
+
+Please input an integer greater than 1: 64
+Sum of factors: 63
+Input: 64
+Closeness: 1
+
+Please input an integer greater than 1: 81
+Sum of factors: 40
+Input: 81
+Closeness: 50
+
+Please input an integer greater than 1: 500
+Sum of factors: 592
+Input: 500
+Closeness: 18
+
+Please input an integer greater than 1: 8128
+Sum of factors: 8128
+Input: 8128
+Closeness: 0
+
+Please input an integer greater than 1: 90000
+Sum of factors: 224743
+Input: 90000
+Closeness: 149
+*/
