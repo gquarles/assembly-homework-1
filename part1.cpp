@@ -6,8 +6,9 @@
     the program will ask the user for a integer greater than 1
     then calculate all of the factors for that number, add
     the factors together and get the percentage of closeness
-    to the originial number as a way to calculate how pure a
-    number is
+    to the originial number as a way to calculate how percect a
+    number is, which is when a numbers factors all add up to the number
+    itself
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -36,12 +37,10 @@ int main()
             sub ecx, 1 //Decrement loop counter
             top: nop //Head of for loop
             mov eax, input //load input
-            mov edx, 0 //0 edx
-            div ecx //input / i
-            mul ecx // i * (input / i)
-            mov ebx, input
-            sub ebx, eax //input - i* (input / i)
-            cmp ebx, 0 // if input - i* (input / i) == 0
+            mov edx, 0 //0 out edx for division
+            mov eax, input //Load input into edx
+            div ecx //divide to see if is a factor
+            cmp edx, 0 // if input - i* (input / i) == 0
             jne xexit //If it is not, exit the loop
             mov eax, sumOfFactors //load sumOfFactors
             add eax, ecx //Add factor to sum of factors
@@ -64,7 +63,7 @@ int main()
         //Print outputs from the assembly
         printf("Sum of factors: %d\n", sumOfFactors);
         printf("Input: %d\n", input);
-        printf("Closeness: %d\n", closeness);
+        printf("Closeness: %d%%\n", closeness);
 
         //Ask for input
         printf("\nPlease input an integer greater than 1: ");
