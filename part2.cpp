@@ -1,6 +1,13 @@
 //CSC 362 Homework 6
 //Author: Griffin Quarles
-
+/*
+Description:
+	This program will take a array of numbers
+	and preform the insertion sort algorithm
+	implemented with inline intel assembly code
+	all of the variables are in c with all of the
+	logic in assembly
+*/
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
@@ -8,9 +15,13 @@
 
 int main() {
 
+	//Declare and init array
 	int a[20] = { 100, 99, 97, 95, 90, 87, 86, 83, 81, 77, 74, 69, 63, 50, 44, 43, 39, 31, 29, 12 };
 	//int a[9] = { 123456, 342100, 87539, 606006, 443322, 198371, 99109, 88018, 707007 };
+	//Array count
 	int n = 20;
+	
+	//declare vars for insertion sort
 	int temp;
 	int location;
 
@@ -54,9 +65,17 @@ int main() {
 	}
 
 
+	//Output sorted array
 	for (int z = 1; z < n; z++) {
 		printf("%d ", a[z]);
 	}
 
+	//Exit
 	return 0;
 }
+
+
+/*
+Run 1: 29 31 39 43 44 50 63 69 74 77 81 83 86 87 90 95 97 99 100
+Run 2: 88018 99109 123456 198371 342100 443322 606006 707007
+*/
