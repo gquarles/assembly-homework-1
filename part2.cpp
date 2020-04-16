@@ -13,8 +13,14 @@ int main() {
 	int location;
 
 	for (int i = 1; i < n; i++) {
-		temp = a[i];
-		location = i - 1;
+		__asm {
+			mov ecx, i //Load iterator into ecx
+			mov eax, a[ecx*4] //Load a[i]
+			mov temp, eax       //temp = a[i]
+			dec ecx //dec location
+			mov location, ecx   //location = i - 1
+			inc ecx //Inc ecx after saving location
+		}
 
 		while (location >= 0 && a[location] > temp) {
 			__asm {
@@ -23,7 +29,7 @@ int main() {
 				inc eax //incrment location
 				mov a[eax*4], ebx //Save var in array  //a[location + 1] = a[location];
 				dec eax //Decrement by 2               //location--;
-				dec eax
+				dec eax //eax is location
 				mov location, eax //Save location
 			}
 			
