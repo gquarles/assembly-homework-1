@@ -21,15 +21,20 @@ int main() {
 				mov eax, location //Load in location
 				mov ebx, a[eax*4] //Load in the var from array into ebx
 				inc eax //incrment location
-				mov a[eax*4], ebx //Save var in array
+				mov a[eax*4], ebx //Save var in array  //a[location + 1] = a[location];
+				dec eax //Decrement by 2               //location--;
 				dec eax
-				dec eax
-				mov location, eax
+				mov location, eax //Save location
 			}
-			//a[location + 1] = a[location];
-			//location--;
+			
 		}
-		a[location + 1] = temp;
+
+		__asm {
+			mov eax, location //Move location into eax
+			inc eax //increment eax to go further in the array
+			mov ebx, temp //load temp into ebx
+			mov a[eax*4], ebx //save a[location + 1] = temp;
+		}
 	}
 
 
